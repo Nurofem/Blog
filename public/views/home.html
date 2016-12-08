@@ -1,0 +1,46 @@
+<?php
+use App\Table\Article;
+use App\Table\Categorie;
+
+$articles = Article::all();
+$categories = Categorie::all();
+
+
+?>
+<div class="row">
+
+    <div class="col-sm-8">
+            <h2>Page de home</h2>
+
+            <ul class="list-group">
+            <?php
+
+                foreach($articles as $article)
+                {
+            ?>   
+                <li>
+                    <h4><?= $article->titre;?></h4> 
+                    <p>Cette article appartient de <strong><?=$article->categorie; ?></strong></p>
+                    <p><em><?=$article->extrait;?></em></p>
+                    <p><a href="<?=$article->url; ?>">Voir la suite</a></p>   
+                </li>  
+                <?php
+                }
+                ?>  
+            </ul>
+
+    </div>
+
+    <div class="col-sm-4" style="padding-top:50px;">
+
+        <ul class="list-group">
+            <?php foreach($categories as $category):?>
+            <li class="list-group-item"><a href="<?=$category->url;?>"><?=$category->titre; ?></a></li>
+            <?php endforeach;?>
+        </ul>
+
+
+
+    </div>
+
+</div>
