@@ -17,7 +17,6 @@ class Autoloader{
        
          $class = ucfirst($class);
      
-        
          require dirname(__DIR__).'\\'.$class.'.php';
     }
 

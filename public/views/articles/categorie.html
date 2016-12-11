@@ -1,0 +1,44 @@
+<?php
+use App\App;
+
+$articles = \App\App::getInstance()->getTable('articles')->findByCategory($_GET['id']);
+
+?>
+
+<div class="row">
+
+    <div class="col-sm-8">
+            <h2>Page de home</h2>
+
+            <ul class="list-group">
+            <?php
+
+            foreach( $articles as $article)
+                {
+            ?>   
+               <li>
+                    <h4><?= $article->titre;?></h4> 
+                    <p>Cette article appartient de <strong><?=$article->category; ?></strong></p>
+                    <p><em><?=$article->extrait;?></em></p>
+                    <p><a href="<?=$article->url; ?>">Voir la suite</a></p>   
+                </li>  
+                <?php
+                }
+                ?>  
+            </ul>
+
+    </div>
+
+    <div class="col-sm-4" style="padding-top:50px;">
+
+        <ul class="list-group">
+            <?php foreach(\App\App::getInstance('categories')->getTable('categories')->all() as $category):?>
+            <li class="list-group-item"><a href="<?=$category->url;?>"><?=$category->titre; ?></a></li>
+            <?php endforeach;?>
+        </ul>
+
+
+
+    </div>
+
+</div>
