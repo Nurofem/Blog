@@ -10,6 +10,7 @@ class App
 {
     protected static $_instance;
     protected static $db;
+    
 
 
     protected $path_table = '\\App\Table\\';
@@ -55,4 +56,14 @@ class App
 
         Autoloader::register();
     }
+
+    public function getMessage($result , $msg)
+    {
+        $class = $result == true ? 'success' : 'danger';
+        $html = "<div class='alert alert-{$class}' id=info>".$msg."</div>";
+
+        return $html;
+    }
+
+
 }

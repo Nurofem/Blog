@@ -1,9 +1,7 @@
 <?php
 
+    $article = \App\App::getInstance()->getTable('articles')->find($_GET['id']);
 
-
-
-$article = \App\App::getInstance()->getTable('articles')->find($_GET['id']);
 
 
 ?>

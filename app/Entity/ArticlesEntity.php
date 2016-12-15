@@ -20,5 +20,18 @@ class ArticlesEntity extends Entity{
         return date('d-m-Y', strtotime($this->date_de_creation));
     }
 
+    public function getEditUrl()
+    {
+        return 'index.php?p=admin.article.edit&id='.$this->id;
+    }
 
+    public static function getCreate()
+    {
+        return 'index.php?p=admin.article.create';
+    }
+
+    public function getDelete()
+    {
+        return 'index.php?p=admin.article.delete';
+    }
 }

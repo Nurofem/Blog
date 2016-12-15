@@ -6,6 +6,7 @@ define('ROOT', str_replace('\\', '/', __DIR__));
 require ROOT.'/app/App.php';
 use App\App;
 
+
 App::load();
 
 
@@ -15,6 +16,8 @@ if (isset($_GET['p'])) {
 } else {
     $page = 'home';
 }
+
+
 
 ob_start();
 
@@ -26,9 +29,14 @@ if ($page === 'home') {
     
     require ROOT.'/public/views/articles/categorie.html';
 
-} else {
+} elseif(strpos($page , 'admin') !== false){
 
-    require ROOT.'/public/views/articles/single.html';
+   
+    require ROOT.'/public/views/admin/index.php';
+
+}elseif($page === 'article') {
+
+    require ROOT.'/public/views/articles/single.php';
 }
 
 $content = ob_get_clean();

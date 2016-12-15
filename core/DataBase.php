@@ -34,7 +34,7 @@ class DataBase {
     protected function execute($statement, $class , $once = false)
     {
         $this->getPDO();
-      
+       
         $pdoStatement = $this->pdo->query($statement);
         $pdoStatement->setFetchMode(PDO::FETCH_CLASS, $class);
 
@@ -51,12 +51,21 @@ class DataBase {
 
     public function prepare($statement, $options , $class, $once = false)
     {
-
+        $this->getPDO();
+        if(preg_match('#UPDATE|INSERT|DELETE#', $statement))
+        {
+            
+            $pdoStatment = $this->pdo->prepare($statement);
+            
+            return $pdoStatment->execute($options);
+          
+        }
+       
         if($options == null)
         {
            return  $this->execute($statement , $class , $once);
         }
-         $this->getPDO();
+        
     
          $pdoStatment = $this->pdo->prepare($statement);
          $pdoStatment->execute($options);

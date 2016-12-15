@@ -21,7 +21,7 @@ class ArticlesTable extends Table{
              FROM Articles 
              LEFT JOIN categories 
              ON articles.category_id = categories.id
-             ORDER BY articles.date_de_creation ,  'DESC'               
+             ORDER BY articles.date_de_creation DESC               
             ",
             null,
 
@@ -39,7 +39,7 @@ class ArticlesTable extends Table{
              LEFT JOIN categories 
              ON articles.category_id = categories.id
              WHERE articles.id = ?
-             ORDER BY articles.date_de_creation ,  'DESC'               
+             ORDER BY articles.date_de_creation  DESC               
             ",
             [$id],
 
@@ -67,5 +67,8 @@ class ArticlesTable extends Table{
            
         );
     }
+
+  
+
 
 }

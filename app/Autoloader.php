@@ -15,7 +15,7 @@ class Autoloader{
     public static function autoload($class)
     {
        
-         $class = ucfirst($class);
+         //$class = ucfirst($class);
      
          require dirname(__DIR__).'\\'.$class.'.php';
     }

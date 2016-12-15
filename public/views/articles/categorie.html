@@ -3,6 +3,15 @@ use App\App;
 
 $articles = \App\App::getInstance()->getTable('articles')->findByCategory($_GET['id']);
 
+if($articles == null)
+{
+        $message = " 404 Pas d'article dans cette categorie";
+         $_SESSION['info'] = [
+          'result'=> false,
+          'message' => $message
+         ]; 
+      header('location: index.php');
+}
 ?>
 
 <div class="row">
